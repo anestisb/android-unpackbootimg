@@ -132,7 +132,8 @@ int main(int argc, char** argv)
     printf("BOARD_RAMDISK_OFFSET %08x\n", header.ramdisk_addr - base);
     printf("BOARD_SECOND_OFFSET %08x\n", header.second_addr - base);
     printf("BOARD_TAGS_OFFSET %08x\n", header.tags_addr - base);
-    int a,b,c,y,m = 0;
+    int a, b, c, y, m;
+    a = b = c = y = m = 0;
     if (header.os_version != 0) {
         int os_version,os_patch_level;
         os_version = header.os_version >> 11;
