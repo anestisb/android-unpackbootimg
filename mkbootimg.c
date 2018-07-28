@@ -377,7 +377,8 @@ int main(int argc, char **argv)
     hdr.cmdline[BOOT_ARGS_SIZE - 1] = '\0';
     if (cmdlen >= (BOOT_ARGS_SIZE - 1)) {
         cmdline += (BOOT_ARGS_SIZE - 1);
-        strncpy((char *)hdr.extra_cmdline, cmdline, BOOT_EXTRA_ARGS_SIZE);
+        strncpy((char *)hdr.extra_cmdline, cmdline, BOOT_EXTRA_ARGS_SIZE - 1);
+        hdr.extra_cmdline[BOOT_EXTRA_ARGS_SIZE - 1] = '\0';
     }
 
     kernel_data = load_file(kernel_fn, &hdr.kernel_size);
