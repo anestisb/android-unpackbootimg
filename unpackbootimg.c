@@ -100,6 +100,10 @@ int main(int argc, char** argv)
 
     int total_read = 0;
     FILE* f = fopen(filename, "rb");
+    if (!f) {
+        printf("Input file not found.\n");
+        return 1;
+    }
     boot_img_hdr header;
 
     //printf("Reading header...\n");
