@@ -31,12 +31,22 @@ int read_padding(FILE* f, unsigned itemsize, int pagesize)
     return count;
 }
 
-void write_string_to_file(const char* file, const char* string)
+int write_string_to_file(const char* file, const char* string)
 {
+    // Try to create a directory first.
+    char* fcopy = strdup(file);
+    mkdir(dirname(fcopy), 0777);
+    free(fcopy);
+
     FILE* f = fopen(file, "w");
+    if (!f) {
+        printf("File %s can't be opened.\n", file);
+        return 1;
+    }
     fwrite(string, strlen(string), 1, f);
     fwrite("\n", 1, 1, f);
     fclose(f);
+    return 0;
 }
 
 const char *detect_hash_type(const struct boot_img_hdr *hdr)
