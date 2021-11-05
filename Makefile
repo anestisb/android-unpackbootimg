@@ -4,7 +4,7 @@ DEP_CC  ?= gcc
 AR      ?= ar
 RANLIB  ?= ranlib
 STRIP   ?= strip
-CFLAGS  += -O2 -Wall -Werror -Wno-address-of-packed-member
+CFLAGS  += -O2 -Wall -Werror -Wno-error=maybe-uninitialized -Wno-error=address-of-packed-member
 LDFLAGS +=
 
 # libmincrypt
